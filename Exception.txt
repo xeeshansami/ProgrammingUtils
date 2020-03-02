@@ -1,0 +1,23 @@
+} catch (IndexOutOfBoundsException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        }catch (NumberFormatException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (IllegalArgumentException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (ActivityNotFoundException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (SecurityException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (IllegalStateException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (NullPointerException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        }catch (OutOfMemoryError e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (RuntimeException e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } catch (Exception e) {
+            Log.e("ExceptionError"," = "+e.getMessage());
+        } finally {
+            Log.e("ExceptionError"," = Finally");
+        }

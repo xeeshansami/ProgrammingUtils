@@ -1,0 +1,58 @@
+android.support.v7.widget.Toolbar toolbar = findViewById(R.id.universal_toolbar);
+            toolbar.setSubtitle("Global Service Area");
+            toolbar.setTitle("Timeline");
+            toolbar.setTitleTextColor(getResources().getColor(R.color.whiteThemeColor));
+            toolbar.setSubtitleTextColor(getResources().getColor(R.color.lightGreyThemeColor));
+            setSupportActionBar(toolbar);
+            final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.dashboard_drawer);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.str_navigation_drawer_open, R.string.str_navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+            NavigationView navigationView = findViewById(R.id.dashboard_nav);
+            View hView = navigationView.getHeaderView(0);
+            drawer_tv_headerName = hView.findViewById(R.id.drawer_tv_name);
+            drawer_tv_headerEmal = hView.findViewById(R.id.drawer_tv_email);
+            new FontAmaranthRegular(this, drawer_tv_headerName);
+            new FontAmaranthRegular(this, drawer_tv_headerEmal);
+            drawer_tv_headerEmal.setText(useremail);
+            //TODO:HomeDrawer Menu
+            //TODO:HomeDrawer Menu Activities Click Events
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(MenuItem menuItem) {
+                    int id = menuItem.getItemId();
+                    switch (id) {
+                        case R.id.sett_main_services: {
+                            drawer.closeDrawer(Gravity.LEFT);
+                            startActivity(new Intent(Dashboard.this, ServiceDetails.class));
+                        }
+                        break;
+
+                        case R.id.sett_dashboard: {
+                            drawer.closeDrawer(Gravity.LEFT);
+                            Refresh();
+                        }
+                        break;
+                        case R.id.signout:
+                            if (isOnline()) {
+                                signOut();
+                            } else {
+                                Toast.makeText(Dashboard.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                            }
+                            break;
+                        case R.id.about:
+                            startActivity(new Intent(Dashboard.this, About.class));
+                            break;
+                        case R.id.sett_notification:
+                            startActivity(new Intent(Dashboard.this, Notifications.class));
+                            break;
+                    }
+                    return false;
+                }
+            });
+        } else {
+
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+    }

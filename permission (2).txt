@@ -1,0 +1,40 @@
+private static final int PERMISSION_REQUEST_READ_PHONE_STATE = 101;
+public static final int OVERLAY_PERMISSION_REQ_CODE_CHATHEAD = 1234;
+
+
+onCreate
+  getRequiredPermissions();
+
+
+//methods
+    private void getRequiredPermissions() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.MODIFY_AUDIO_SETTINGS) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_CALL_LOG) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_PHONE_STATE, Manifest.permission.MODIFY_AUDIO_SETTINGS, Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALL_LOG, Manifest.permission.CALL_PHONE, Manifest.permission.CALL_PHONE, Manifest.permission.SEND_SMS};
+                requestPermissions(permissions, PERMISSION_REQUEST_READ_PHONE_STATE);
+            }
+        }
+    }
+
+
+//When user permitted the permission
+ @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_READ_PHONE_STATE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+ Toast.makeText(this, "Permissions granted.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Required permissions.", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+          
+        }
+    }

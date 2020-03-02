@@ -1,0 +1,12 @@
+CODE BOARD
+com.sufisahb.avid
+com.idm.dvdr
+ffd11a 
+ff4174
+291289
+4a20ce
+hd.video.downloader.app.hdvideodownloader.
+com.mxrdr.vd.
+com.dusky.smd.b
+hd.video.downloader.fore.android.hdvideodownloader
+com.hd.video.downloader.androidhdvideodownloader

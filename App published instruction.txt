@@ -1,0 +1,18 @@
+APP PUBLISHED INSTRUCTION
+1.check menifest if debuggable true then remove. from application tag.
+2save keystore into the save place
+3. keystore alias and pwd would be same.
+4. check apk folder name app-realese.
+5. check previous version of the app if app is already published. and also upgrade.
+6.Check package name in flovour, gradles. menifest and android root directory.
+7.Check Android api upgraded version.
+8. Check Apk Size. less than 15 to 20 mbs.
+9. finally project create backup into the save placed.
+10. Check overall app and also check the ads if ads included into the app.
+11.youtube material have not into the app.
+12. When app released apk then first check into appInfo
+=> packagename
+=> icon
+=> app name
+13. before chane the package name first check package name is already exist or not.
+

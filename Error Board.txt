@@ -1,0 +1,4 @@
+ERROR BOARD.
+preview is unavaiable untill after  a succesfull project sync
+
+READ_CALL_LOG
