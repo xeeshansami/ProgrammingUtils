@@ -1,0 +1,159 @@
+1. Calculator
+2. SimpleCalculator
+3. SimpleCalculator2 (GUI Calculator with OOP Concepts)
+
+4.employeeInfowithTextFile
+           1. Validation
+           3. using Combo and Group Box
+           2. Interface Classes (checkbox , combobox, dialog box)
+           3. Annonmous method in dialog box
+           4. Text File Data Reading
+           5. Text File Data Writing
+
+
+5.employeeInfowithTextFileMultiRecord
+           1. Text File Data Reading Using Array List and emp Class
+
+6.employeeInfowithSQLLight
+           1.Database Creataion
+           2.Add Record
+           3.get Total NO OF RECORD
+
+7.employeeInfowithSQLLightMultiRecord
+           1.Read All Record 
+           2.Update Record
+           3.Delete Record
+           4. Search Record
+
+8.employeeInfowithSQLLightMultiRecordandList
+           1.Combo by Country record from db
+           2.Combo by City record from db
+   
+
+9.employeeInfowithSQLLightSmartSearchList
+           1.Auto Complete Text bOX
+           2.get All Record USING array list
+           3.Smart Search
+       
+          
+10.employeeInfowithSQLLightandMenu
+           1.ADD MENU
+           2.ADD MENU XML
+           
+     
+11.employeeInfowithSQLLightandMenuandCountryCity
+           1.ADD MENU
+           2.ADD MENU XML
+           3.add menhod of country add
+           4.ADD country intent
+           5.ADD country intent in manifest file
+
+12.employeeInfowithSQLLightMenuandLOGIN
+           1.ADD LOGIN PAGE
+           2.ADD GLOBAL VARIABLE
+           3.ACCESS GLOBAL VARIABLE
+
+13.employeeInfowithSQLLightView-1
+          
+        
+14.employeeInfowithSQLLightViewWithImg-2
+          
+15.employeeInfowithSQLLightViewWithDynamicImg-3
+          
+16.employeeInfowithSQLLightViewWithDynamicRate-4
+         
+17.employeeInfowithSQLLightViewWithDynamicCheckBox-5
+
+18.RadioButton2
+          
+19.emplyeeInfowithSQLLightCompleteSolution 
+   (1.With Data saving of check box combo and radio button
+   2.Multi column Data Showing)
+
+          
+20.MyAndroidWebSite1-DOTNET
+      1.login.aspx
+      2.loginwithsp.aspx
+      3.getStudent.aspx
+      4.XMLWebService.aspx
+
+
+22-andlivedb
+     1.loginLiveDOTNET.java
+     2.loginLivePHP.java
+     3.getAllStudent (USING XML)
+     4.EMPListActivity (USING XML PARSER)
+     5.GoogleLBSAPPSActivity.java (GPS)
+    
+
+23-ADVANCE TOPIC
+     0.advTopicTabActivity
+     1.advTopicFilpper
+     2.advTopicFilpper-2
+     3.Browser1Activity.java
+
+
+24-Maps-Basic
+
+25-Maps-Navigate
+
+26-Drawer
+
+----------------ADVANCE TOPIC----------------
+
+27-Menus (context menu) ok
+
+28-Files  (Saving File in external Storage) ok
+   employeeInfowithTextFileMultiRecordExStorage
+
+29-Backup and Restore DB
+    emplyeeInfowithSQLLightBACKUPDB
+
+-------------------*-------------------------
+
+----------------ok---------------------------
+
+29-Fragments OK
+
+30-ListFragmentExample OK
+
+31-SendSMS OK
+
+32-SMS (SMS RECEIVING)
+
+32-advTopicGridView OK
+
+34-ImageSwitcher OK
+
+35-advTopicProgressBar OK
+
+36-SIMCardID ok
+
+37-Phone ok
+
+38-Camera Ok
+
+38-Bluetooth ok
+
+39-Flashlight
+
+40-IPAddress
+
+41-SocketServer
+
+42-SocketClient
+
+43-SocketsActivity
+
+45-DownloadFile (FileDownloading)
+
+46-PROJECT
+
+--------------------------------New------------------
+46-FileUploading
+
+47-SplashScreen
+
+48-VideoStreamming
+
+4

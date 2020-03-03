@@ -1,0 +1,45 @@
+The Role of a Java Developer
+The Role of a Java Developer
+A Java Developer is responsible for the programming and development of applications and software using the popular programming language, Java.
+
+A Java developer is a specialised type of programmer who may collaborate with web developers and software engineers to integrate Java into business applications, software and websites.  They are involved throughout the entire development life cycle of a product and must be able to identify and analyse any issues or problems and be able to come up with an efficient solution. Other duties may include collating and documenting user requirements, analysing data and quality assurance testing.
+
+The role of a Java Developer is an in-demand role at the moment and Technojobs have a variety of Java Developer jobs available so click here to view all our vacancies.
+
+What is Java?
+The word Java may sound familiar to coffee lovers and Geography teachers but in the IT world, Java is one of the most popular programming languages in use with a reported 9 million developers. Not to be confused with Javascript, Java is known for its efficient processing speed in software, computer games and applications for both desktop and mobile. It is used to develop software and web-based applications for a variety of platforms and is very popular due to its ease of use for beginners though it can still take some time to master.
+
+Java was developed in 1995 by Sun Microsystems (which has since been acquired by Oracle) and is a programming language that is concurrent, class-based, objected oriented and is based on the syntax of C and C++.
+
+Roles and Responsibilities
+A Java developer is responsible for many duties throughout the development lifecycle of applications, from concept and design right through to testing. Here are some other responsibilities they may have:
+
+Design, implement and maintain java application phases
+To take part in software and architectural development activities
+Conduct software analysis, programming, testing and debugging
+Identifying production and non-production application issues
+Transforming requirements into stipulations
+Develop, test, implement and maintain application software
+Recommend changes to improve established java application processes
+Develop technical designs for application development
+Develop application code for java programs
+Key Skills and Experience
+A java programmer will require experience in software development as well as the following skills:
+
+Java based web services
+Relational Databases, SQL and ORM
+J2EE framework
+Object Oriented Analysis and Design
+JSP
+EJB (Enterprise Java Beans)
+XML,X query, XSL
+Test-Driven Development
+A java developer also needs to possess certain traits to overcome the challenges of the job role which include learning new computer languages and the patience to solve problems.
+
+Qualifications
+A professional certification is recommended when looking for jobs in in Java Development. Most employers will require applicants to have a degree in computer science, information systems, mathematics or any other closely related field. Computer science degrees tend to be more preferable as these courses tend to offer tasks related to Java programming with coursework including data structures, computer architecture, database management, statistics and technical writing.
+
+However, applicants without any kind of degree or education can still be considered if they can show significant knowledge and experience of programming in Java.
+
+Java Developer Salary
+Java Developers can earn between £32,000 and £60,000. The amount is dependent upon a number of factors, one of which is location. It is not uncommon for Java Developers in London to be paid more. 

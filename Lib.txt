@@ -1,0 +1,17 @@
+ //TODO: For Circle Image
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    //TODO:for right context menu popup
+    compile 'com.yalantis:contextmenu:1.0.7'
+    //TODO:for Animated Edit Text
+    compile 'com.github.florent37:materialtextfield:1.0.3'
+    //TODO:for Floating Animated Button
+    compile 'com.samsaodev.vertical-floating-menu:library:1.0'
+    compile 'com.github.clans:fab:1.6.4'
+    //volley Api
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.google.code.gson:gson:2.6.1'
+    compile 'dev.dworks.libs:volleyplus:+'
+    compile "org.apache.httpcomponents:httpcore:4.2.4"
+    compile "org.apache.httpcomponents:httpmime:4.3"
+//OkHttpClient
+compile 'com.squareup.okhttp:okhttp:2.5.0'
