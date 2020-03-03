@@ -1,0 +1,210 @@
+
+Map Objects
+
+Maps are represented in the API by the GoogleMap and MapFragment classes.
+
+Code samples
+
+The ApiDemos repository on GitHub includes samples that demonstrate the use of the GoogleMap object and the SupportMapFragment:
+
+BasicMapDemoActivity: Displaying a basic map with a marker
+basic_demo.xml: Adding a SupportMapFragment in a layout definition
+Add a map to an Android app
+
+See the getting started guide for a quick way to create an app using the Google Maps template in Android Studio.
+The basic steps for adding a map are:
+
+(You only need to do this step once.) Follow the steps in the project configuration guide to get the API, obtain a key and add the required attributes to your Android manifest.
+Add a Fragment object to the Activity that will handle the map. The easiest way to do this is to add a <fragment> element to the layout file for the Activity.
+Implement the OnMapReadyCallback interface and use the onMapReady(GoogleMap) callback method to get a handle to the GoogleMap object. The GoogleMap object is the internal representation of the map itself. To set the view options for a map, you modify its GoogleMap object.
+Call getMapAsync() on the fragment to register the callback.
+Below is more detail about each step.
+
+
+Add a fragment
+
+Add a <fragment> element to the activity's layout file to define a Fragment object. In this element, set the android:name attribute to "com.google.android.gms.maps.MapFragment". This automatically attaches a MapFragment to the activity.
+
+The following layout file contains a <fragment> element:
+
+<?xml version="1.0" encoding="utf-8"?>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="com.google.android.gms.maps.MapFragment"
+    android:id="@+id/map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+You can also add a MapFragment to an Activity in code. To do this, create a new MapFragment instance, and then call FragmentTransaction.add() to add the Fragment to the current Activity
+
+ mMapFragment = MapFragment.newInstance();
+ FragmentTransaction fragmentTransaction =
+         getFragmentManager().beginTransaction();
+ fragmentTransaction.add(R.id.my_container, mMapFragment);
+ fragmentTransaction.commit();
+
+Add map code
+
+To work with the map inside your app, you'll need to implement the OnMapReadyCallback interface and set an instance of the callback on a MapFragment or MapView object. This tutorial uses a MapFragment, because that's the most common way of adding a map to an app. The first step is to implement the callback interface:
+
+public class MainActivity extends FragmentActivity
+    implements OnMapReadyCallback {
+...
+}
+In your Activity's onCreate() method, set the layout file as the content view. For example, if the layout file has the name main.xml, use this code:
+
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    ...
+}
+Get a handle to the fragment by calling FragmentManager.findFragmentById(), passing it the resource ID of your <fragment> element. Notice that the resource ID R.id.map is added automatically to the Android project when you build the layout file.
+
+Then use getMapAsync() to set the callback on the fragment.
+
+MapFragment mapFragment = (MapFragment) getFragmentManager()
+    .findFragmentById(R.id.map);
+mapFragment.getMapAsync(this);
+Note: The Google Maps Android API requires API level 12 or higher for the support of MapFragment objects. If you are targeting an application earlier than API level 12, you can access the same functionality through the SupportMapFragment class. You must also include the Android Support Library.
+Note: getMapAsync() must be called from the main thread, and the callback will be executed in the main thread. If Google Play services is not installed on the user's device, the callback will not be triggered until the user installs Play services.
+Use the onMapReady(GoogleMap) callback method to get a handle to the GoogleMap object. The callback is triggered when the map is ready to be used. It provides a non-null instance of GoogleMap. You can use the GoogleMap object to set the view options for the map or add a marker, for example.
+
+@Override
+public void onMapReady(GoogleMap map) {
+    map.addMarker(new MarkerOptions()
+        .position(new LatLng(0, 0))
+        .title("Marker"));
+}
+
+The map object
+
+The Google Maps Android API allows you to display a Google map in your Android application. These maps have the same appearance as the maps you see in the Google Maps for Mobile (GMM) app, and the API exposes many of the same features. Two notable differences between the GMM application and the maps displayed by the Google Maps Android API are:
+
+Map tiles displayed by the API don't contain any personalized content, such as personalized smart icons.
+Not all icons on the map are clickable. For example, transit station icons can’t be clicked. However, markers that you add to the map are clickable, and the API has a listener callback interface for various marker interactions.
+In addition to mapping functionality, the API also supports a full range of interactions that are consistent with the Android UI model. For example, you can set up interactions with a map by defining listeners that respond to user gestures.
+
+The key class when working with a map object is the GoogleMap class. GoogleMap models the map object within your application. Within your UI, a map will be represented by either a MapFragment or MapView object.
+
+GoogleMap handles the following operations automatically:
+
+Connecting to the Google Maps service.
+Downloading map tiles.
+Displaying tiles on the device screen.
+Displaying various controls such as pan and zoom.
+Responding to pan and zoom gestures by moving the map and zooming in or out.
+In addition to these automatic operations, you can control the behavior of maps with objects and methods of the API. For example, GoogleMap has callback methods that respond to keystrokes and touch gestures on the map. You can also set marker icons on your map and add overlays to it, using objects you provide to GoogleMap.
+
+
+MapFragment
+
+MapFragment, a subclass of the Android Fragment class, allows you to place a map in an Android fragment. MapFragment objects act as containers for the map, and provide access to the GoogleMap object.
+
+Unlike a View, a Fragment represents a behavior or a portion of user interface in an activity. You can combine multiple fragments in a single activity to build a multi-pane UI and reuse a fragment in multiple activities. Refer to the Android documentation on Fragments to learn more.
+
+
+MapView
+
+MapView, a subclass of the Android View class, allows you to place a map in an Android View. A View represents a rectangular region of the screen, and is a fundamental building block for Android applications and widgets. Much like a MapFragment, the MapView acts as a container for the map, exposing core map functionality through the GoogleMap object.
+
+When using the API in fully interactive mode, users of the MapView class must forward the following activity lifecycle methods to the corresponding methods in the MapView class: onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy(), onSaveInstanceState(), and onLowMemory(). The ApiDemos repository on GitHub includes a sample that demonstrates how to forward the activity lifecycle methods. When using the API in lite mode, forwarding lifecycle events is optional. For details, see the lite mode documentation.
+
+Map types
+
+There are many types of maps available within the Google Maps Android API. A map's type governs the overall representation of the map. For example, an atlas usually contains political maps that focus on showing boundaries, and road maps that show all of the roads for a city or region.
+
+The Google Maps Android API offers four types of maps, as well as an option to have no map at all:
+
+Normal
+Typical road map. Shows roads, some features built by humans, and important natural features like rivers. Road and feature labels are also visible.
+Hybrid
+Satellite photograph data with road maps added. Road and feature labels are also visible.
+Satellite
+Satellite photograph data. Road and feature labels are not visible.
+Terrain
+Topographic data. The map includes colors, contour lines and labels, and perspective shading. Some roads and labels are also visible.
+None
+No tiles. The map will be rendered as an empty grid with no tiles loaded.
+Change the map type
+
+To set the type of a map, call the GoogleMap object's setMapType() method, passing one of the type constants defined in GoogleMap. For example, to display a satellite map:
+
+GoogleMap map;
+...
+// Sets the map type to be "hybrid"
+map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+The image below shows a comparison of normal, hybrid and terrain maps for the same location:
+
+MapType Comparison
+
+Indoor maps
+
+At high zoom levels, the map shows floor plans for indoor spaces such as airports, shopping malls, large retail stores, and transit stations. These floor plans, called indoor maps, are displayed for the 'normal' and 'satellite' map types (GoogleMap.MAP_TYPE_NORMAL and GoogleMap.MAP_TYPE_SATELLITE). They are automatically enabled when the user zooms in, and they fade away when the map is zoomed out.
+
+Deprecation notice: In a future release, indoor maps will only be available on the normal map type. From that future release, indoor maps will not be supported on satellite, terrain or hybrid maps. Even where indoor is not supported, isIndoorEnabled() will continue to return the value that has been set via setIndoorEnabled(), as it does now. By default, setIndoorEnabled is true. The release notes will let you know when indoor support becomes unavailable on those map types.
+
+Indoor map example
+Work with indoor maps in the API
+
+Here is a summary of the indoor maps functionality in the API:
+
+You can disable indoor maps by calling GoogleMap.setIndoorEnabled(false). By default, indoor maps are enabled. Indoor maps are displayed on one map at a time. By default this is the first map added to your app. If you'd like to display indoor maps on a different map, disable them on the first map then call setIndoorEnabled(true) on the second map.
+To disable the default level picker (floor picker), call GoogleMap.getUiSettings().setIndoorLevelPickerEnabled(false). For more details, see Interacting with the Map.
+An interface on GoogleMap, OnIndoorStateChangeListener, allows you to set a listener to be called when either a new building comes into focus, or a new level is activated in a building. For more details, see Interacting with the Map.
+GoogleMap.getFocusedBuilding() gives you the building that is currently in focus. You can then find the currently active level by calling IndoorBuilding.getActiveLevelIndex(). Refer to the reference documentation to see all the information available in the IndoorBuilding and IndoorLevel objects.
+Styling of the base map does not affect indoor maps.
+
+Add floor plans
+
+Indoor maps (floor plans) are available in select locations. If floor plan data is not available for a building that you would like to highlight in your application, you can:
+
+Add floor plans to Google Maps directly. This will make your floor plans available to all users of Google Maps.
+Display a floor plan as a ground overlay or tile overlay on your map. This will enable only users of your application to view your floor plans.
+Configure initial state
+
+The Maps API allows you to configure the initial state of the map to suit your application's needs. You can specify the following:
+
+The camera position, including: location, zoom, bearing and tilt. See Camera and View for more details on camera positioning.
+The map type.
+Whether the zoom buttons and/or compass appear on screen.
+The gestures a user can use to manipulate the camera.
+Whether lite mode is enabled or not. A lite mode map is a bitmap image of a map that supports a subset of the functionality supplied by the full API.
+You can configure the initial state of the map either via XML, if you have added the map to your activity's layout file, or programmatically, if you have added the map that way.
+
+Using XML attributes
+
+This section describes how to set the initial state of the map if you have added a map to your application using an XML layout file.
+
+The Maps API defines a set of custom XML attributes for a MapFragment or a MapView that you can use to configure the initial state of the map directly from the layout file. The following attributes are currently defined:
+
+mapType. This allows you to specify the type of map to display. Valid values include: none, normal, hybrid, satellite and terrain.
+cameraTargetLat, cameraTargetLng, cameraZoom, cameraBearing, cameraTilt. These allow you to specify the initial camera position. See here for more details on Camera Position and its properties.
+uiZoomControls, uiCompass. These allow you to specify whether you want the zoom controls and compass to appear on the map. See UiSettings for more details.
+uiZoomGestures, uiScrollGestures, uiRotateGestures, uiTiltGestures. These allow you to specify which gestures are enabled/disabled for interaction with the map. See UiSettings for more details.
+zOrderOnTop. Control whether the map view's surface is placed on top of its window. See SurfaceView.setZOrderOnTop(boolean) for more details. Note that this will cover all other views that could appear on the map (e.g., the zoom controls, the my location button).
+useViewLifecycle. Only valid with a MapFragment. This attribute specifies whether the lifecycle of the map should be tied to the fragment's view or the fragment itself. See here for more details.
+liteMode. A value of true sets the map to lite mode. A lite mode map is a bitmap image of a map that supports a subset of the functionality supplied by the full API. The default value of this attribute is false.
+In order to use these custom attributes within your XML layout file, you must first add the following namespace declaration. You can choose any namespace, it doesn't have to be map:
+
+xmlns:map="http://schemas.android.com/apk/res-auto"
+You can then add the attributes with a map: prefix into your layout components, as you would with standard Android attributes.
+
+The following XML code snippet shows how to configure a MapFragment with some custom options. The same attributes can be applied to a MapView as well.
+
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:map="http://schemas.android.com/apk/res-auto"
+  android:name="com.google.android.gms.maps.SupportMapFragment"
+  android:id="@+id/map"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  map:cameraBearing="112.5"
+  map:cameraTargetLat="24.911618"
+  map:cameraTargetLng="67.089418"
+  map:cameraTilt="30"
+  map:cameraZoom="13"
+  map:mapType="normal"
+  map:uiCompass="false"
+  map:uiRotateGestures="true"
+  map:uiScrollGestures="false"
+  map:uiTiltGestures="true"
+  map:uiZoomControls="false"
+  map:uiZoomGestures="true"/>

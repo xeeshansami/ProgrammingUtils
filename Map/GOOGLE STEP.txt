@@ -1,0 +1,82 @@
+
+
+STEP-1
+GO CMD PROMPT
+key
+G:\Program Files\Java\jdk1.7.0_01\bin
+
+STEP-2
+keytool -list -v -keystore "%USERPROFILstoreE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+or
+
+keytool.exe -list -alias androiddebugkey -keystore "G:\Documents and Settings\majid.SUPARCOINT\.android\debug.keystore" -storepass android
+
+
+
+G:\Program Files\Java\jdk1.7.0_01\bin>keytool.exe -list -alias androiddebugkey -
+keystore "G:\Documents and Settings\majid.SUPARCOINT\.android\debug.keystore" -s
+torepass android
+androiddebugkey, Sep 24, 2012, PrivateKeyEntry,
+Certificate fingerprint (SHA1): E1:FE:9C:B1:BC:20:F6:8A:23:29:D1:DA:3C:CE:68:0D:
+32:84:25:0F
+
+
+
+-----------------------------------------
+new key 7-nov-14
+
+AE:30:D6:D6:D6:31:82:B7:62:CC:BC:66:4A:2C:55:FE:F7:F7:75:2F
+
+STEP-3
+GO
+https://accounts.google.com/ServiceLogin
+
+
+user name : majidtahir2012@gmail.com
+password  : yarehman
+
+
+STEP-4
+GO
+https://code.google.com/apis/console/?pli=1
+
+
+STEP-5
+
+SELECT--> Google Developer Console-->Select Project-->CREATE PROJECT
+SELECT--> API & AUTH-->API-->Google Maps APIs-->Google Maps Android API-->Select Enable API
+
+
+STEP-6
+
+SELECT--> API & AUTH-->Credentials-->Add Credentials-->API Key-->Android Key
+
+STEP-7
+
+select--> Add Package name and fingerprint-->
+
+STEP-8  Enter your SHA 1 and your android project package name separated by semicolon ; and click on create.
+
+STEP-9
+   
+Key for Android apps (with certificates)
+API key: 	
+AIzaSyDiqWsQKMbcTlZd5QHdt91f7_U0V52r9lU
+Android apps: 	
+E1:FE:9C:B1:BC:20:F6:8A:23:29:D1:DA:3C:CE:68:0D:32:84:25:0F;com.example.googleapp
+Activated on: 	Mar 17, 2014 3:53 AM
+Activated by: 	abdulmajidtahir2012@gmail.com – you 
+
+STEP-10
+
+Key for Android apps (with certificates)
+API key:	
+AIzaSyD2vLJSf-T2ecHKk37pSToSvsTAfHDhkvw
+Android apps:	
+E1:FE:9C:B1:BC:20:F6:8A:23:29:D1:DA:3C:CE:68:0D:32:84:25:0F;net.learn2develop.maps
+Activated on:	May 15, 2014 11:54 PM
+Activated by:	 majidtahir2012@gmail.com – you
+
+
+
