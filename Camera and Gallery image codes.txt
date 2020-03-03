@@ -1,0 +1,4 @@
+private static final int CAMERA_REQUEST = 1888;
+private static final int GALLERY_REQUEST = 1889;
+startActivityForResult(cameraIntent, CAMERA_REQUEST);
+startActivityForResult(cameraIntent, GALLERY_REQUEST);

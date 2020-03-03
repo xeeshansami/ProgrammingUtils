@@ -1,0 +1,2 @@
+ Intent i = new Intent(getActivity(), MarketView.class);
+                startActivity(i);

@@ -1,0 +1,13 @@
+ <com.rilixtech.CountryCodePicker
+                app:ccp_clickable="true"
+                app:ccp_arrowSize="26sp"
+                app:ccp_textSize="26sp"
+                app:ccp_textGravity="CENTER"
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:autofillHints="Country Code"
+                app:ccp_defaultCode="92"
+                app:ccp_enableHint="true" />
