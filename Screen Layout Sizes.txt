@@ -1,0 +1,5 @@
+small				 360 dp
+normal bigger devices 		450dp
+7 devices 				600dp
+10 devices 			720dp
+for Bigger Devices like tablets TVs 	800 dp
