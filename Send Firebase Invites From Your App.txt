@@ -1,0 +1,43 @@
+Send Invitations
+
+
+To use Firebase Invites, you need to create a button or link for your users to share the app with their friends. In the onClick target for this button, build an Intent using the AppInviteInvitation.IntentBuilder class:
+
+private void 
+
+onInviteClicked() {
+    Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+            .setMessage(getString(R.string.invitation_message))
+            .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
+            .setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
+            .setCallToActionText(getString(R.string.invitation_cta))
+            .build();
+    startActivityForResult(intent, REQUEST_INVITE);
+}
+
+
+
+Recieve The Result.
+
+Launching the AppInviteInvitation intent opens the contact chooser where the user selects the contacts to invite. Invites are sent via email or SMS. After the user chooses contacts and sends the invite, your app receives a callback to onActivityResult :
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    Log.d(TAG, "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode);
+
+    if (requestCode == REQUEST_INVITE) {
+        if (resultCode == RESULT_OK) {
+            // Get the invitation IDs of all sent messages
+            String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
+            for (String id : ids) {
+                Log.d(TAG, "onActivityResult: sent invitation " + id);
+            }
+        } else {
+            // Sending failed or it was canceled, show failure message to the user
+            // ...
+        }
+    }
+}
+
+

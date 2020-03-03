@@ -1,0 +1,21 @@
+You can use Crash.log to log custom events in your crash reports and optionally also the logcat. If you wish to simply log an event and don't want logcat ouput, you only need to pass a string as the argument, as shown in this example:
+
+FirebaseCrash.log("Activity created");
+
+If you also wish to create logcat output, you must also supply the log level and a tag.
+
+
+Generate A Crash Report
+
+You can also generate reports in instances where you catch an exception. You can do this in instances where your application catches an exception but you still want to report the occurrence. The following example demonstrates logging an event to the report and logcat and generating a report after catching an unrecoverable exception.
+
+FirebaseCrash.logcat(Log.ERROR, TAG, "NPE caught");
+FirebaseCrash.report(ex);
+
+Firebase Crash also automatically generates reports for uncaught exceptions.);
+
+
+
+
+
+

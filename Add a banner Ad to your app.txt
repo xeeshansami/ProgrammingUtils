@@ -1,0 +1,64 @@
+add a banner ad to yout layout File design 
+
+
+To put a banner ad in your app, add the following code to your layout file, including the Android Ads schema.
+
+
+<RelativeLayout
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    ...
+    >
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+</RelativeLayout>
+
+
+
+
+
+JAVA CODE.
+Load the ad in the activity.
+Add code to the onCreate() class of this activity to load the ad
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+// ...
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+
+    private AdView mAdView;
+    // ...
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+Add your 	 Add unit ID
+
+
+Store your Ad Unit ID in your strings.xml file. The ID below is just for testing, make sure to change it before you publish your app.
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    ...
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
+

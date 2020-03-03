@@ -1,0 +1,26 @@
+Also add the service to your manifest file
+<service
+    android:name=".MyFirebaseInstanceIDService">
+    <intent-filter>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+    </intent-filter>
+</service>
+
+-____________________________________
+On initial startup of your app, the FCM SDK generates a registration token for the client app instance. If you want to target single devices, or create device groups, you'll need to access this token.
+
+
+You can access the token's value by creating a new class which extends FirebaseInstanceIdService . In that class, call getToken within onTokenRefresh , and log the value as shown
+
+@Override
+public void onTokenRefresh() {
+    // Get updated InstanceID token.
+    String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+    Log.d(TAG, "Refreshed token: " + refreshedToken);
+
+    // If you want to send messages to this application instance or
+    // manage this apps subscriptions on the server side, send the
+    // Instance ID token to your app server.
+    sendRegistrationToServer(refreshedToken);
+}
+

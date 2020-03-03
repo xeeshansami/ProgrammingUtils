@@ -1,0 +1,25 @@
+ private void getAllShops() {
+        firebase.child("Market_Shops").child(market_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+
+                    HashMap<String, Object> hashMap = (HashMap<String, Object>) d.getValue();
+                    Shop shop = new Shop(Double.parseDouble(hashMap.get("lat").toString()), Double.parseDouble(hashMap.get("lon").toString()), Double.parseDouble(hashMap.get("width").toString()), Double.parseDouble(hashMap.get("length").toString()));
+                    allShops.add(shop);
+
+                    if (!d.getKey().equals(shop_id)) {
+                        createShop(shop, 1);
+                        shopMarkersList.add(mMap.addMarker(new MarkerOptions().position(shop.getLocation()).icon(BitmapDescriptorFactory.fromResource(R.drawable.allshopflag)).title(hashMap.get("name").toString()).snippet(hashMap.get("category1").toString() + "\n" + hashMap.get("category2").toString() + "\n" + hashMap.get("category3").toString())));
+                    }
+                }
+                getCurrentShop();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Log.e("databaseError", databaseError.getMessage());
+                //getAllShops();
+            }
+        });

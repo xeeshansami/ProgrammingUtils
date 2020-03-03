@@ -1,0 +1,8 @@
+Create Refrence 
+
+Declare a StorageReference and initialize it in the onCreate method.
+
+
+private StorageReference mStorageRef;
+
+mStorageRef = FirebaseStorage.getInstance().getReference();

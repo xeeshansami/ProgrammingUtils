@@ -1,0 +1,21 @@
+The code below downloads a local file using the getFile() method. You can also download to device memory using getBytes() .
+
+
+You can view the files in your storage bucket in the Firebase console .
+Learn best practices and explore different methods to upload and download in the documentation .
+
+File localFile = File.createTempFile("images", "jpg");
+riversRef.getFile(localFile)
+    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+        @Override
+        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+            // Successfully downloaded data to local file
+            // ...
+        }
+    }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception exception) {
+            // Handle failed download
+            // ...
+        }
+    });

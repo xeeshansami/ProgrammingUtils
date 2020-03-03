@@ -1,0 +1,10 @@
+[project root]/[module name]/build/outputs/mapping/[build type]/[appname]-proguard-mapping.txt
+
+If you have Proguard enabled, uploading your mapping files allows you to see deobfuscated stack traces in the Crash Reporting interface. For testing purposes, you can set-up Proguard for debug build types then build with ./gradlew assembleDebug as shown below:
+
+
+debug {
+   minifyEnabled true
+   proguardFiles getDefaultProguardFile('proguard-android.txt'),
+     'proguard-rules.pro'
+}

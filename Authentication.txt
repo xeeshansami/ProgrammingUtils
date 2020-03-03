@@ -1,0 +1,17 @@
+Declare an instance of FirebaseAuth
+
+private FirebaseAuth mAuth;
+
+In the onCreate() method, initialize the FirebaseAuth instance.
+
+mAuth = FirebaseAuth.getInstance();
+
+When initializing your Activity, check to see if the user is currently signed in.@Override
+
+
+public void onStart() {
+    super.onStart();
+    // Check if user is signed in (non-null) and update UI accordingly.
+    FirebaseUser currentUser = mAuth.getCurrentUser();
+    updateUI(currentUser);
+}

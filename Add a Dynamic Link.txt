@@ -1,0 +1,53 @@
+
+Create a new Dynamic Link in the Firebase console and specify the link URL that your app will handle. Dynamic Links are cross-platform so the same link can be used for all your users.
+
+
+In AndroidManifest.xml , add an intent filter to the activity that should open the deeplink.
+
+<intent-filter>
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+    <data
+        android:host="example.com"
+        android:scheme="https"/>
+</intent-filter>
+
+
+
+In this activity, call the getDynamicLink() method to parse the deeplink and either automatically launch it or use the metadata.
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // ...
+
+    FirebaseDynamicLinks.getInstance()
+            .getDynamicLink(getIntent())
+            .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                @Override
+                public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                    // Get deep link from result (may be null if no link is found)
+                    Uri deepLink = null;
+                    if (pendingDynamicLinkData != null) {
+                        deepLink = pendingDynamicLinkData.getLink();
+                    }
+
+
+                    // Handle the deep link. For example, open the linked
+                    // content, or apply promotional credit to the user's
+                    // account.
+                    // ...
+
+                    // ...
+                }
+            })
+            .addOnFailureListener(this, new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w(TAG, "getDynamicLink:onFailure", e);
+                }
+            });
+}
+
+

@@ -1,0 +1,26 @@
+Declare the com.google.firebase.analytics.FirebaseAnalytics object at the top of your activity
+
+private FirebaseAnalytics mFirebaseAnalytics;
+
+
+___________________________--
+Then initialize it in the onCreate() method
+
+// Obtain the FirebaseAnalytics instance.
+mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
+___________________________________________
+LogEvents.
+
+Once you have created a FirebaseAnalytics instance, you can use it to log either predefined or custom events with the logEvent() method. You can explore the predefined events and parameters in the FirebaseAnalytics.Event and FirebaseAnalytics.Param reference documentation.
+
+The following code logs a SELECT_CONTENT Event when a user clicks on a specific element in your app
+
+
+Bundle bundle = new Bundle();
+bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
+bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
+bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+

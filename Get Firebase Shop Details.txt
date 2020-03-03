@@ -1,0 +1,27 @@
+firebase.child("Shop_Requests").child(market_id).child(shop_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    Log.d("Position", "Getting shop details");
+                    shopDataModel = dataSnapshot.getValue(ShopDataModel.class);
+                    shop_name = shopDataModel.getName().toString();
+                    if (shopDataModel.getCategory2().equals("-")) {
+                        category_names.add(shopDataModel.getCategory1());
+                    } else if (shopDataModel.getCategory3().equals("-")) {
+                        category_names.add(shopDataModel.getCategory1());
+                        category_names.add(shopDataModel.getCategory2());
+                    } else {
+                        category_names.add(shopDataModel.getCategory1());
+                        category_names.add(shopDataModel.getCategory2());
+                        category_names.add(shopDataModel.getCategory3());
+                    }
+                    user_id = shopDataModel.getUser_id();
+                    getCategoryImages();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });

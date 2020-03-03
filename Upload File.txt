@@ -1,0 +1,31 @@
+The simplest way to upload to your storage bucket is by uploading a local file, such as photos and videos from the camera, using the putFile() method. You can also upload raw data using putBytes() or from an InputStream using putStream() .
+
+
+
+Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
+StorageReference riversRef = storageRef.child("images/rivers.jpg");
+
+riversRef.putFile(file)
+    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        @Override
+        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            // Get a URL to the uploaded content
+            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+        }
+    })
+    .addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception exception) {
+            // Handle unsuccessful uploads
+            // ...
+        }
+    });
+
+
+
+After starting the UploadTask you can manage it using the pause() , resume() and cancel() methods.
+
+
+
+
+

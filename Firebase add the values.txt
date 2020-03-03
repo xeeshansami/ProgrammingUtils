@@ -1,0 +1,90 @@
+__________________________________________
+// Write a message to the database
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference myRef = database.getReference("message");
+myRef.setValue("Hello, World!");
+
+_________________________________________
+// Read from the database
+myRef.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+        // This method is called once with the initial value and again
+        // whenever data at this location is updated.
+        String value = dataSnapshot.getValue(String.class);
+        Log.d(TAG, "Value is: " + value);
+    }
+
+    @Override
+    public void onCancelled(DatabaseError error) {
+        // Failed to read value
+        Log.w(TAG, "Failed to read value.", error.toException());
+    }
+});
+
+
+
+__________________________
+  //Firebase Activty get the value from client side and send to the server of firebase
+    private void getMarkets(){
+        fb.child("Admin_Market").child(userDataModelSingleTon.getId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                market_address.clear();
+                market_names.clear();
+                allMarkets.clear();
+                if (dataSnapshot.hasChildren()){
+                    for (DataSnapshot d:dataSnapshot.getChildren()){
+                        market_id.add(((HashMap<String,Object>)d.getValue()).get("marketID").toString());
+                        getMarketData(((HashMap<String,Object>)d.getValue()).get("marketID").toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
+
+
+
+
+______________________________________-
+//Create the connection and Declare the class instance
+ firebase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+
+ //Add the values in markets DB of Firebase
+        firebase.child("Markets").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    marketDataModel = d.getValue(MarketDataModel.class);
+                    if (checkDistance(marketDataModel.getLatitude(), marketDataModel.getLongitude())) {
+                        //Market Id set Autoselect becaouse it is primary key and set the values
+                        //market data set the values form marketDataModel Class
+                        market_id.add(d.getKey().toString());
+                        market_names.add(marketDataModel.getName());
+                        market_area.add(marketDataModel.getAddress());
+                        market_day.add(marketDataModel.getDay());
+                        dataModelList.add(marketDataModel);
+                        market_list.setAdapter(customAdapter_marketsList);
+                        customAdapter_marketsList.notifyDataSetChanged();
+                    }
+                }
+                 market_id_fresh = new ArrayList(market_id);
+                 market_names_fresh  = new ArrayList(market_names);
+                 market_area_fresh  = new ArrayList(market_area);
+                 market_day_fresh = new ArrayList(market_day);
+                 mdataModelList_fresh  = new ArrayList<MarketDataModel>(dataModelList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });

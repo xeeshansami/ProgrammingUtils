@@ -1,0 +1,33 @@
+ private void getCurrentShop() {
+        if (parentActivity.equals("PendingShops") || parentActivity.equals("ShopRequest"))
+            firebase.child("Shop_Requests").child(market_id).child(shop_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    shopDataModel2 = dataSnapshot.getValue(ShopDataModel.class);
+                    shopMarkersList.add(mMap.addMarker(new MarkerOptions().position(new LatLng(shopDataModel2.getLat(), shopDataModel2.getLon())).icon(BitmapDescriptorFactory.fromResource(R.drawable.shopicon_c)).title(shopDataModel2.getName()).snippet(shopDataModel2.getCategory1() + "\n" + shopDataModel2.getCategory2() + "\n" + shopDataModel2.getCategory3())));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(shopDataModel2.getLat(), shopDataModel2.getLon()), 20));
+                    currentShop = new Shop(shopDataModel2.getLat(), shopDataModel2.getLon(), Double.parseDouble(shopDataModel2.getWidth()), Double.parseDouble(shopDataModel2.getLength()));
+                    createShop(currentShop, 2);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    getCurrentShop();
+                }
+            });
+        else {
+            firebase.child("Market_Shops").child(market_id).child(shop_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    shopDataModel2 = dataSnapshot.getValue(ShopDataModel.class);
+                    shopMarkersList.add(mMap.addMarker(new MarkerOptions().position(new LatLng(shopDataModel2.getLat(), shopDataModel2.getLon())).icon(BitmapDescriptorFactory.fromResource(R.drawable.shopicon_c)).title(shopDataModel2.getName())));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(shopDataModel2.getLat(), shopDataModel2.getLon()), 20));
+                    currentShop = new Shop(shopDataModel2.getLat(), shopDataModel2.getLon(), Double.parseDouble(shopDataModel2.getWidth()), Double.parseDouble(shopDataModel2.getLength()));
+                    createShop(currentShop, 2);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    getCurrentShop();
+                }
+            });
